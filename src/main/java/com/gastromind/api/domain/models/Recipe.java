@@ -1,4 +1,4 @@
-package es.gastromind.domain.models;
+package com.gastromind.api.domain.models;
 
 import java.time.LocalDate;
 

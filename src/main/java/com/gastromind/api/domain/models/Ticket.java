@@ -1,6 +1,6 @@
-package es.gastromind.domain.models;
-
+package com.gastromind.api.domain.models;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Ticket {
     String id;
@@ -9,36 +9,20 @@ public class Ticket {
     float total_amount;
     LocalDate purchaseDate;
 
-    /**
-     * Constructor con todos los parametros
-     * 
-     * @param id           id del ticket
-     * @param user_id      id del usuario
-     * @param store_name   nombre de la tienda
-     * @param total_amount precio total de la compra
-     * @param purchaseDate fecha de la compra
-     */
-    public Ticket(String id, User user_id, String store_name, float total_amount, LocalDate purchaseDate) {
-        this.id = id;
-        this.user_id = user_id;
-        this.store_name = store_name;
-        this.total_amount = total_amount;
-        this.purchaseDate = purchaseDate;
+    public Ticket() {
     }
 
-    /**
-     * Constructor con id
-     * 
-     * @param id id del ticket
-     */
     public Ticket(String id) {
         this.id = id;
     }
 
-    /**
-     * Constructor vacio
-     */
-    public Ticket() {
+
+    public Ticket(String id, User user_id, Store store_id, float total_amount, LocalDate purchaseDate) {
+        this.id = id;
+        this.user_id = user_id;
+        this.store_id = store_id;
+        this.total_amount = total_amount;
+        this.purchaseDate = purchaseDate;
     }
 
     public String getId() {
@@ -57,12 +41,12 @@ public class Ticket {
         this.user_id = user_id;
     }
 
-    public String getStore_name() {
-        return store_name;
+    public Store getStore_id() {
+        return store_id;
     }
 
-    public void setStore_name(String store_name) {
-        this.store_name = store_name;
+    public void setStore_id(Store store_id) {
+        this.store_id = store_id;
     }
 
     public float getTotal_amount() {
@@ -82,28 +66,14 @@ public class Ticket {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(getId(), ticket.getId());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Ticket other = (Ticket) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
-
 }

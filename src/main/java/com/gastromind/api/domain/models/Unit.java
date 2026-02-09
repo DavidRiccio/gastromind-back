@@ -1,5 +1,4 @@
-package es.gastromind.domain.models;
-
+package com.gastromind.api.domain.models;
 public class Unit {
     String id;
     String name;
@@ -60,7 +59,7 @@ public class Unit {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Store other = (Store) obj;
+        Unit other = (Unit) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
