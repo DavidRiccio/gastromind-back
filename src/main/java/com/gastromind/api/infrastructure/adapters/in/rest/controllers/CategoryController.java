@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gastromind.api.domain.models.Allergen;
+import com.gastromind.api.domain.models.Category;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,41 +21,41 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/allergens")
-@Tag(name = "Alérgeno", description = "Gestión del catálogo de alérgenos e intolerancias alimentarias.")
-public class AllergenController {
+@RequestMapping("/api/v1/categories")
+@Tag(name = "Categoría", description = "Gestión del catálogo de categorías para la clasificación de productos y recetas.")
+public class CategoryController {
 
-    @Operation(summary = "Obtener todos los alérgenos", description = "Devuelve una lista completa de todos los alérgenos registrados en el sistema.")
+    @Operation(summary = "Obtener todas las categorías", description = "Devuelve una lista completa de todas las categorías registradas.")
     @GetMapping
-    public ResponseEntity<List<Allergen>> getAll() {
+    public ResponseEntity<List<Category>> getAll() {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Buscar alérgeno por ID", description = "Devuelve un único alérgeno basándose en su identificador único.")
+    @Operation(summary = "Buscar categoría por ID", description = "Devuelve una única categoría basándose en su identificador único.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Alérgeno encontrado correctamente"),
-        @ApiResponse(responseCode = "404", description = "Alérgeno no encontrado")
+        @ApiResponse(responseCode = "200", description = "Categoría encontrada correctamente"),
+        @ApiResponse(responseCode = "404", description = "Categoría no encontrada")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Allergen> getById(
-            @Parameter(description = "ID del alérgeno a buscar", example = "1") 
+    public ResponseEntity<Category> getById(
+            @Parameter(description = "ID de la categoría a buscar", example = "1") 
             @PathVariable Integer id) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Crear nuevo alérgeno", description = "Registra un nuevo alérgeno en el sistema.")
+    @Operation(summary = "Crear nueva categoría", description = "Registra una nueva categoría en el sistema.")
     @PostMapping
-    public ResponseEntity<Allergen> create(@RequestBody Allergen allergen) {
+    public ResponseEntity<Category> create(@RequestBody Category category) {
         return ResponseEntity.status(201).build();
     }
 
-    @Operation(summary = "Actualizar alérgeno", description = "Modifica los datos de un alérgeno existente.")
+    @Operation(summary = "Actualizar categoría", description = "Modifica los datos de una categoría existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Allergen> update(@PathVariable Integer id, @RequestBody Allergen allergen) {
+    public ResponseEntity<Category> update(@PathVariable Integer id, @RequestBody Category category) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Eliminar alérgeno", description = "Borra físicamente un alérgeno de la base de datos.")
+    @Operation(summary = "Eliminar categoría", description = "Borra físicamente una categoría de la base de datos.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         return ResponseEntity.noContent().build();

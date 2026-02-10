@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gastromind.api.domain.models.Allergen;
+import com.gastromind.api.domain.models.Product;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,41 +21,41 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/allergens")
-@Tag(name = "Alérgeno", description = "Gestión del catálogo de alérgenos e intolerancias alimentarias.")
-public class AllergenController {
+@RequestMapping("/api/v1/products")
+@Tag(name = "Producto", description = "Gestión del catálogo de productos disponibles en el sistema.")
+public class ProductController {
 
-    @Operation(summary = "Obtener todos los alérgenos", description = "Devuelve una lista completa de todos los alérgenos registrados en el sistema.")
+    @Operation(summary = "Obtener todos los productos", description = "Devuelve una lista completa de todos los productos registrados.")
     @GetMapping
-    public ResponseEntity<List<Allergen>> getAll() {
+    public ResponseEntity<List<Product>> getAll() {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Buscar alérgeno por ID", description = "Devuelve un único alérgeno basándose en su identificador único.")
+    @Operation(summary = "Buscar producto por ID", description = "Devuelve un único producto basándose en su identificador único.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Alérgeno encontrado correctamente"),
-        @ApiResponse(responseCode = "404", description = "Alérgeno no encontrado")
+        @ApiResponse(responseCode = "200", description = "Producto encontrado correctamente"),
+        @ApiResponse(responseCode = "404", description = "Producto no encontrado")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Allergen> getById(
-            @Parameter(description = "ID del alérgeno a buscar", example = "1") 
+    public ResponseEntity<Product> getById(
+            @Parameter(description = "ID del producto a buscar", example = "1") 
             @PathVariable Integer id) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Crear nuevo alérgeno", description = "Registra un nuevo alérgeno en el sistema.")
+    @Operation(summary = "Crear nuevo producto", description = "Registra un nuevo producto en el sistema.")
     @PostMapping
-    public ResponseEntity<Allergen> create(@RequestBody Allergen allergen) {
+    public ResponseEntity<Product> create(@RequestBody Product product) {
         return ResponseEntity.status(201).build();
     }
 
-    @Operation(summary = "Actualizar alérgeno", description = "Modifica los datos de un alérgeno existente.")
+    @Operation(summary = "Actualizar producto", description = "Modifica los datos de un producto existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Allergen> update(@PathVariable Integer id, @RequestBody Allergen allergen) {
+    public ResponseEntity<Product> update(@PathVariable Integer id, @RequestBody Product product) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Eliminar alérgeno", description = "Borra físicamente un alérgeno de la base de datos.")
+    @Operation(summary = "Eliminar producto", description = "Borra físicamente un producto de la base de datos.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         return ResponseEntity.noContent().build();
