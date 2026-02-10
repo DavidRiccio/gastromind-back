@@ -1,4 +1,4 @@
-package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL;
+/* package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL;
 
 import java.util.List;
 import java.util.Optional;
@@ -201,3 +201,4 @@ public class UserFavoritesAdapter implements UserFavoritesJpaRepository {
     }
 
 }
+ */

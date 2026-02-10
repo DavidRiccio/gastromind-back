@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gastromind.api.domain.models.Fridge;
 import com.gastromind.api.domain.repositories.Fridgerepository;
-import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.FridgeJpaRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.FridgeJpaRepository;
 
 public class FridgeAdapter  implements Fridgerepository{
 

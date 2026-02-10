@@ -2,8 +2,11 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jp
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gastromind.api.domain.models.HouseHold;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.HouseholdEntity;
 
-public interface HouseHoldJpaRepository extends JpaRepository<HouseHold, String> {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface HouseHoldJpaRepository extends JpaRepository<HouseholdEntity, String> {
     
 }
