@@ -2,7 +2,7 @@ package com.gastromind.api.domain.models;
 
 import java.time.LocalDate;
 
-import es.gastromind.domain.models.enums.Appliance;
+import com.gastromind.api.domain.models.enums.Appliance;
 
 public class Recipe {
     String id;
