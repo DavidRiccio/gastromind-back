@@ -22,10 +22,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/v1/allergens")
-@Tag(name = "Alérgenos", description = "Gestión del catálogo de alérgenos para usuarios y productos")
+@Tag(name = "Alérgeno", description = "Gestión del catálogo de alérgenos e intolerancias alimentarias.")
 public class AllergenController {
 
-    @Operation(summary = "Obtener todos los alérgenos", description = "Devuelve una lista completa de todos los alérgenos registrados.")
+    @Operation(summary = "Obtener todos los alérgenos", description = "Devuelve una lista completa de todos los alérgenos registrados en el sistema.")
     @GetMapping
     public ResponseEntity<List<Allergen>> getAll() {
         return ResponseEntity.ok().build();

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gastromind.api.domain.models.Category;
+import com.gastromind.api.domain.models.Ticket;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,41 +21,41 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/categories")
-@Tag(name = "Categoría", description = "Gestión del catálogo de categorías para la clasificación de productos y recetas.")
-public class CategoryController {
+@RequestMapping("/api/v1/tickets")
+@Tag(name = "Ticket", description = "Gestión de tickets de compra y registros de transacciones.")
+public class TicketController {
 
-    @Operation(summary = "Obtener todas las categorías", description = "Devuelve una lista completa de todas las categorías registradas.")
+    @Operation(summary = "Obtener todos los tickets", description = "Devuelve una lista completa de todos los tickets registrados.")
     @GetMapping
-    public ResponseEntity<List<Category>> getAll() {
+    public ResponseEntity<List<Ticket>> getAll() {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Buscar categoría por ID", description = "Devuelve una única categoría basándose en su identificador único.")
+    @Operation(summary = "Buscar ticket por ID", description = "Devuelve un único ticket basándose en su identificador único.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Categoría encontrada correctamente"),
-        @ApiResponse(responseCode = "404", description = "Categoría no encontrada")
+        @ApiResponse(responseCode = "200", description = "Ticket encontrado correctamente"),
+        @ApiResponse(responseCode = "404", description = "Ticket no encontrado")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getById(
-            @Parameter(description = "ID de la categoría a buscar", example = "1") 
+    public ResponseEntity<Ticket> getById(
+            @Parameter(description = "ID del ticket a buscar", example = "1") 
             @PathVariable Integer id) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Crear nueva categoría", description = "Registra una nueva categoría en el sistema.")
+    @Operation(summary = "Crear nuevo ticket", description = "Registra un nuevo ticket en el sistema.")
     @PostMapping
-    public ResponseEntity<Category> create(@RequestBody Category category) {
+    public ResponseEntity<Ticket> create(@RequestBody Ticket ticket) {
         return ResponseEntity.status(201).build();
     }
 
-    @Operation(summary = "Actualizar categoría", description = "Modifica los datos de una categoría existente.")
+    @Operation(summary = "Actualizar ticket", description = "Modifica los datos de un ticket existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@PathVariable Integer id, @RequestBody Category category) {
+    public ResponseEntity<Ticket> update(@PathVariable Integer id, @RequestBody Ticket ticket) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Eliminar categoría", description = "Borra físicamente una categoría de la base de datos.")
+    @Operation(summary = "Eliminar ticket", description = "Borra físicamente un ticket de la base de datos.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         return ResponseEntity.noContent().build();

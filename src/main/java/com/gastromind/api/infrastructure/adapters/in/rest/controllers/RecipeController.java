@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gastromind.api.domain.models.Category;
+import com.gastromind.api.domain.models.Recipe;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,41 +21,41 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/v1/categories")
-@Tag(name = "Categoría", description = "Gestión del catálogo de categorías para la clasificación de productos y recetas.")
-public class CategoryController {
+@RequestMapping("/api/v1/recipes")
+@Tag(name = "Receta", description = "Gestión del catálogo de recetas culinarias y sus pasos de preparación.")
+public class RecipeController {
 
-    @Operation(summary = "Obtener todas las categorías", description = "Devuelve una lista completa de todas las categorías registradas.")
+    @Operation(summary = "Obtener todas las recetas", description = "Devuelve una lista completa de todas las recetas registradas.")
     @GetMapping
-    public ResponseEntity<List<Category>> getAll() {
+    public ResponseEntity<List<Recipe>> getAll() {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Buscar categoría por ID", description = "Devuelve una única categoría basándose en su identificador único.")
+    @Operation(summary = "Buscar receta por ID", description = "Devuelve una única receta basándose en su identificador único.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Categoría encontrada correctamente"),
-        @ApiResponse(responseCode = "404", description = "Categoría no encontrada")
+        @ApiResponse(responseCode = "200", description = "Receta encontrada correctamente"),
+        @ApiResponse(responseCode = "404", description = "Receta no encontrada")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getById(
-            @Parameter(description = "ID de la categoría a buscar", example = "1") 
+    public ResponseEntity<Recipe> getById(
+            @Parameter(description = "ID de la receta a buscar", example = "1") 
             @PathVariable Integer id) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Crear nueva categoría", description = "Registra una nueva categoría en el sistema.")
+    @Operation(summary = "Crear nueva receta", description = "Registra una nueva receta en el sistema.")
     @PostMapping
-    public ResponseEntity<Category> create(@RequestBody Category category) {
+    public ResponseEntity<Recipe> create(@RequestBody Recipe recipe) {
         return ResponseEntity.status(201).build();
     }
 
-    @Operation(summary = "Actualizar categoría", description = "Modifica los datos de una categoría existente.")
+    @Operation(summary = "Actualizar receta", description = "Modifica los datos de una receta existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@PathVariable Integer id, @RequestBody Category category) {
+    public ResponseEntity<Recipe> update(@PathVariable Integer id, @RequestBody Recipe recipe) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Eliminar categoría", description = "Borra físicamente una categoría de la base de datos.")
+    @Operation(summary = "Eliminar receta", description = "Borra físicamente una receta de la base de datos.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         return ResponseEntity.noContent().build();
