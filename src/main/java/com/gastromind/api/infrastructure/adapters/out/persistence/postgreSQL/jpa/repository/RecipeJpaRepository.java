@@ -2,8 +2,11 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jp
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gastromind.api.domain.models.Recipe;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.RecipeEntity;
 
-public interface RecipeJpaRepository extends JpaRepository<Recipe, String>{
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RecipeJpaRepository extends JpaRepository<RecipeEntity, String>{
     
 }

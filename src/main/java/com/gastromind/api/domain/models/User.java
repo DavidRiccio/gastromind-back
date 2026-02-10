@@ -1,39 +1,25 @@
 package com.gastromind.api.domain.models;
+
 public class User {
 
     String id;
-    String text;
+    String name;
     String email;
     String password;
     HouseHold houseHold_id;
 
-    /**
-     * Constructor con todos los parametros
-     * 
-     * @param id       id del usuario
-     * @param text     descripcion del usuario
-     * @param email    email del usuario
-     * @param password contraseña del usuario
-     */
-    public User(String id, String text, String email, String password) {
+    public User(String id, String name, String email, String password, HouseHold houseHold_id) {
         this.id = id;
-        this.text = text;
+        this.name = name;
         this.email = email;
         this.password = password;
+        this.houseHold_id = houseHold_id;
     }
 
-    /**
-     * Constructor con id
-     * 
-     * @param id id del usuario
-     */
     public User(String id) {
         this.id = id;
     }
 
-    /**
-     * Constructor vacio
-     */
     public User() {
     }
 
@@ -45,12 +31,12 @@ public class User {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -67,6 +53,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public HouseHold getHouseHold_id() {
+        return houseHold_id;
+    }
+
+    public void setHouseHold_id(HouseHold houseHold_id) {
+        this.houseHold_id = houseHold_id;
     }
 
     @Override

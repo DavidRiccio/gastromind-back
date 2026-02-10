@@ -2,8 +2,11 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jp
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gastromind.api.domain.models.UserFavorites;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UserFavoritesEntity;
 
-public interface UserFavoritesJpaRepository extends JpaRepository<UserFavorites,String> {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserFavoritesJpaRepository extends JpaRepository<UserFavoritesEntity,String> {
     
 }
