@@ -1,12 +1,21 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ApplianceType;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.DifficultyLevel;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "recipe")
@@ -14,7 +23,7 @@ public class RecipeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     private String title;
 
@@ -45,11 +54,11 @@ public class RecipeEntity {
     public RecipeEntity() {
     }
 
-    public RecipeEntity(Integer id) {
+    public RecipeEntity(String id) {
         this.id = id;
     }
 
-    public RecipeEntity(Integer id, String title, String instructions, Integer servings, Integer prepTimeMinutes,
+    public RecipeEntity(String id, String title, String instructions, Integer servings, Integer prepTimeMinutes,
             LocalDateTime createdAt, ApplianceType applianceNeeded, DifficultyLevel difficulty,
             List<RecipeIngredientEntity> ingredients, List<UserEntity> favoritedBy) {
         this.id = id;
@@ -64,11 +73,11 @@ public class RecipeEntity {
         this.favoritedBy = favoritedBy;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
