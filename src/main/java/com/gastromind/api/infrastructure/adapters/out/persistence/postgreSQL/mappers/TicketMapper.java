@@ -1,7 +1,10 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
 import com.gastromind.api.domain.models.Ticket;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.TicketEntity;
 
@@ -20,4 +23,7 @@ public interface TicketMapper {
     @Mapping(source = "totalAmount", target = "total_amount")
     @Mapping(source = "purchaseDate", target = "purchaseDate")
     Ticket toDomain(TicketEntity entity);
+
+    List<TicketEntity> toEntityList(List<Ticket> domainList);
+    List<Ticket> toDomainList(List<TicketEntity> entityList);
 }

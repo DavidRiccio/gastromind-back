@@ -1,5 +1,7 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -14,4 +16,7 @@ public interface UserMapper {
 
     @Mapping(source = "household", target = "houseHold_id")
     User toDomain(UserEntity entity);
+
+    List<UserEntity> toEntityList(List<User> domainList);
+    List<User> toDomainList(List<UserEntity> entityList);
 }

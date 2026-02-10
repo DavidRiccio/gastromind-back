@@ -7,35 +7,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gastromind.api.domain.models.Product;
 import com.gastromind.api.domain.repositories.ProductRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.ProductEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.ProductJpaRepository;
-
-public class ProductAdapter implements ProductRepository{
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.ProductMapper;
+import org.springframework.stereotype.Component;
+@Component
+public class ProductAdapter implements ProductRepository {
 
     @Autowired
     ProductJpaRepository productJpaRepository;
 
+    @Autowired
+    ProductMapper productMapper;
+
     @Override
     public Product save(Product product) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        ProductEntity entity = productMapper.toEntity(product);
+        return productMapper.toDomain(productJpaRepository.save(entity));
     }
 
     @Override
     public Optional<Product> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+       return productJpaRepository.findById(id).map(productMapper::toDomain);
     }
 
     @Override
     public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        productJpaRepository.deleteById(id);
     }
 
     @Override
     public List<Product> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        List<ProductEntity> productEntities = productJpaRepository.findAll();
+        return productMapper.toDomainList(productEntities);
     }
-    
+
 }

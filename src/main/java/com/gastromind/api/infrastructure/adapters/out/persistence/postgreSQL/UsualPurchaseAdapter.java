@@ -4,38 +4,43 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.UsualPurchase;
 import com.gastromind.api.domain.repositories.UsualPurchaseRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UsualPurchaseEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UsualPurchaseJpaRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.UsualPurchaseMapper;
 
+@Component
 public class UsualPurchaseAdapter implements UsualPurchaseRepository {
 
     @Autowired
     UsualPurchaseJpaRepository usualPurchaseJpaRepository;
 
+    @Autowired
+    UsualPurchaseMapper usualPurchaseMapper;
+
     @Override
     public UsualPurchase save(UsualPurchase usualPurchase) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        UsualPurchaseEntity entity = usualPurchaseMapper.toEntity(usualPurchase);
+        return usualPurchaseMapper.toDomain(usualPurchaseJpaRepository.save(entity));
     }
 
     @Override
     public Optional<UsualPurchase> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return usualPurchaseJpaRepository.findById(id).map(usualPurchaseMapper::toDomain);
     }
 
     @Override
     public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        usualPurchaseJpaRepository.deleteById(id);
     }
 
     @Override
     public List<UsualPurchase> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+         List<UsualPurchaseEntity> usualPurchaseEntities = usualPurchaseJpaRepository.findAll();
+        return usualPurchaseMapper.toDomainList(usualPurchaseEntities);
     }
 
 }

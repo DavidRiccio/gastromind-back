@@ -1,7 +1,10 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
 import com.gastromind.api.domain.models.Fridge;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.FridgeEntity;
 
@@ -13,4 +16,7 @@ public interface FridgeMapper {
 
     @Mapping(source = "household", target = "houseHold_id")
     Fridge toDomain(FridgeEntity entity);
+
+    List<FridgeEntity> toEntityList(List<Fridge> domainList);
+    List<Fridge> toDomainList(List<FridgeEntity> entityList);
 }

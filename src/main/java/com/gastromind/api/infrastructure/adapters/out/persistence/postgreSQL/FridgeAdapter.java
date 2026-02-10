@@ -4,38 +4,42 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Fridge;
 import com.gastromind.api.domain.repositories.Fridgerepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.FridgeEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.FridgeJpaRepository;
-
-public class FridgeAdapter  implements Fridgerepository{
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.FridgeMapper;
+@Component
+public class FridgeAdapter implements Fridgerepository {
 
     @Autowired
     FridgeJpaRepository fridgeJpaRepository;
 
+    @Autowired
+    FridgeMapper fridgeMapper;
+
     @Override
     public Fridge save(Fridge fridge) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        FridgeEntity entity = fridgeMapper.toEntity(fridge);
+        return fridgeMapper.toDomain(fridgeJpaRepository.save(entity));
     }
 
     @Override
     public Optional<Fridge> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return fridgeJpaRepository.findById(id).map(fridgeMapper::toDomain);
     }
 
     @Override
     public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        fridgeJpaRepository.deleteById(id);
     }
 
     @Override
     public List<Fridge> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        List<FridgeEntity> fridgeEntities = fridgeJpaRepository.findAll();
+        return fridgeMapper.toDomainList(fridgeEntities);
     }
-    
+
 }

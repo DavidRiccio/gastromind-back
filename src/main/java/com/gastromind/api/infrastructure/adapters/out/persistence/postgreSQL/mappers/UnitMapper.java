@@ -1,6 +1,9 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
+
 import com.gastromind.api.domain.models.Unit;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UnitEntity;
 
@@ -10,4 +13,7 @@ public interface UnitMapper {
     UnitEntity toEntity(Unit domain);
 
     Unit toDomain(UnitEntity entity);
+
+    List<UnitEntity> toEntityList(List<Unit> domainList);
+    List<Unit> toDomainList(List<UnitEntity> entityList);
 }

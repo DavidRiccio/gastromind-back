@@ -1,7 +1,10 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
 import com.gastromind.api.domain.models.Recipe;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.RecipeEntity;
 
@@ -17,4 +20,7 @@ public interface RecipeMapper {
     @Mapping(source = "applianceNeeded", target = "appliance_needed")
     @Mapping(source = "createdAt", target = "created_at")
     Recipe toDomain(RecipeEntity entity);
+
+    List<RecipeEntity> toEntityList(List<Recipe> domainList);
+    List<Recipe> toDomainList(List<RecipeEntity> entityList);
 }

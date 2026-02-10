@@ -1,6 +1,9 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
+
 import com.gastromind.api.domain.models.Store;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.StoreEntity;
 
@@ -10,4 +13,7 @@ public interface StoreMapper {
     StoreEntity toEntity(Store domain);
 
     Store toDomain(StoreEntity entity);
+
+    List<StoreEntity> toEntityList(List<Store> domainList);
+    List<Store> toDomainList(List<StoreEntity> entityList);
 }

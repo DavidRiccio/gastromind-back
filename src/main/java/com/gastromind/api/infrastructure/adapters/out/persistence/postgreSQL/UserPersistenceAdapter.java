@@ -4,39 +4,43 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.User;
 import com.gastromind.api.domain.repositories.UserRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UserEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UserJpaRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.UserMapper;
 
-public class UserPersistenceAdapter implements UserRepository{
+@Component
+public class UserPersistenceAdapter implements UserRepository {
 
     @Autowired
     UserJpaRepository userJpaRepository;
 
+    @Autowired
+    UserMapper userMapper;
 
     @Override
     public User save(User user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        UserEntity entity = userMapper.toEntity(user);
+        return userMapper.toDomain(userJpaRepository.save(entity));
     }
 
     @Override
     public Optional<User> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return userJpaRepository.findById(id).map(userMapper::toDomain);
     }
 
     @Override
     public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        userJpaRepository.deleteById(id);
     }
 
     @Override
     public List<User> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        List<UserEntity> userEntities = userJpaRepository.findAll();
+        return userMapper.toDomainList(userEntities);
     }
-    
+
 }
