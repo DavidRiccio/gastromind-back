@@ -1,8 +1,19 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import jakarta.persistence.*;
 import java.util.List;
 import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -10,7 +21,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(nullable = false)
     private String name;
@@ -42,11 +53,11 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Integer id) {
+    public UserEntity(String id) {
         this.id = id;
     }
 
-    public UserEntity(Integer id, String name, String email, String password, HouseholdEntity household,
+    public UserEntity(String id, String name, String email, String password, HouseholdEntity household,
             List<TicketEntity> tickets, List<UsualPurchaseEntity> usualPurchases, Set<AllergenEntity> allergens,
             Set<RecipeEntity> favoriteRecipes) {
         this.id = id;
@@ -60,11 +71,11 @@ public class UserEntity {
         this.favoriteRecipes = favoriteRecipes;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

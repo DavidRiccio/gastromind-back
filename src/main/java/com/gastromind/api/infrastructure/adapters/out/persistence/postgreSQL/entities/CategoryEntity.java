@@ -2,14 +2,19 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.en
 
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "category")
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     private String name;
 
@@ -19,21 +24,21 @@ public class CategoryEntity {
     public CategoryEntity() {
     }
 
-    public CategoryEntity(Integer id) {
+    public CategoryEntity(String id) {
         this.id = id;
     }
 
-    public CategoryEntity(Integer id, String name, List<ProductEntity> products) {
+    public CategoryEntity(String id, String name, List<ProductEntity> products) {
         this.id = id;
         this.name = name;
         this.products = products;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
