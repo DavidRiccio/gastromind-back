@@ -5,24 +5,22 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gastromind.api.domain.models.User;
-import com.gastromind.api.domain.repositories.UserRepository;
-import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UserJpaRepository;
+import com.gastromind.api.domain.repositories.StoreRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.StoreJpaRepository;
 
-public class UserPersistenceAdapter implements UserRepository{
+public class StoreAdapter implements StoreRepository {
 
     @Autowired
-    UserJpaRepository userJpaRepository;
-
+    StoreJpaRepository storeJpaRepository;
 
     @Override
-    public User save(User user) {
+    public com.gastromind.api.domain.models.Store save(com.gastromind.api.domain.models.Store store) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
-    public Optional<User> findById(String id) {
+    public Optional<com.gastromind.api.domain.models.Store> findById(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
@@ -34,9 +32,9 @@ public class UserPersistenceAdapter implements UserRepository{
     }
 
     @Override
-    public List<User> findAll() {
+    public List<com.gastromind.api.domain.models.Store> findAll() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
-    
+
 }
