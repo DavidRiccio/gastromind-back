@@ -2,14 +2,21 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.en
 
 import java.math.BigDecimal;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usual_purchase")
 public class UsualPurchaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name = "target_quantity")
     private BigDecimal targetQuantity;
@@ -25,22 +32,22 @@ public class UsualPurchaseEntity {
     public UsualPurchaseEntity() {
     }
 
-    public UsualPurchaseEntity(Integer id) {
+    public UsualPurchaseEntity(String id) {
         this.id = id;
     }
 
-    public UsualPurchaseEntity(Integer id, BigDecimal targetQuantity, UserEntity user, ProductEntity product) {
+    public UsualPurchaseEntity(String id, BigDecimal targetQuantity, UserEntity user, ProductEntity product) {
         this.id = id;
         this.targetQuantity = targetQuantity;
         this.user = user;
         this.product = product;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

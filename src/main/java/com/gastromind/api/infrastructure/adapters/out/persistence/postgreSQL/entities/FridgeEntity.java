@@ -2,7 +2,14 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.en
 
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,7 +18,7 @@ public class FridgeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "household_id", nullable = false)
@@ -23,21 +30,21 @@ public class FridgeEntity {
     public FridgeEntity() {
     }
 
-    public FridgeEntity(Integer id) {
+    public FridgeEntity(String id) {
         this.id = id;
     }
 
-    public FridgeEntity(Integer id, HouseholdEntity household, List<FridgeItemEntity> items) {
+    public FridgeEntity(String id, HouseholdEntity household, List<FridgeItemEntity> items) {
         this.id = id;
         this.household = household;
         this.items = items;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

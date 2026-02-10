@@ -4,14 +4,23 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ticket")
 public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name = "total_amount", precision = 10, scale = 2)
     private BigDecimal totalAmount;
@@ -33,11 +42,11 @@ public class TicketEntity {
     public TicketEntity() {
     }
 
-    public TicketEntity(Integer id) {
+    public TicketEntity(String id) {
         this.id = id;
     }
 
-    public TicketEntity(Integer id, BigDecimal totalAmount, LocalDateTime purchaseDate, UserEntity user,
+    public TicketEntity(String id, BigDecimal totalAmount, LocalDateTime purchaseDate, UserEntity user,
             StoreEntity store, List<TicketItemEntity> items) {
         this.id = id;
         this.totalAmount = totalAmount;
@@ -47,11 +56,11 @@ public class TicketEntity {
         this.items = items;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

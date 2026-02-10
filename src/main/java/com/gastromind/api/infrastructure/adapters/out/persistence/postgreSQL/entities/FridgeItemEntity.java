@@ -1,9 +1,20 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ItemStatus;
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ItemStatus;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "fridge_items")
@@ -11,7 +22,7 @@ public class FridgeItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal quantity;
@@ -30,7 +41,7 @@ public class FridgeItemEntity {
     @JoinColumn(name = "product_id", nullable = false)
     private ProductEntity product;
     
-    public FridgeItemEntity(Integer id, BigDecimal quantity, LocalDate expirationDate, ItemStatus status,
+    public FridgeItemEntity(String id, BigDecimal quantity, LocalDate expirationDate, ItemStatus status,
             FridgeEntity fridge, ProductEntity product) {
         this.id = id;
         this.quantity = quantity;
@@ -40,18 +51,18 @@ public class FridgeItemEntity {
         this.product = product;
     }
 
-    public FridgeItemEntity(Integer id) {
+    public FridgeItemEntity(String id) {
         this.id = id;
     }
 
     public FridgeItemEntity() {
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

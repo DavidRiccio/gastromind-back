@@ -2,14 +2,22 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.en
 
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ApplianceType;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "household_appliances")
 public class HouseholdApllianceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Enumerated(EnumType.STRING)
     private ApplianceType appliance;
@@ -21,21 +29,21 @@ public class HouseholdApllianceEntity {
     public HouseholdApllianceEntity() {
     }
 
-    public HouseholdApllianceEntity(Integer id) {
+    public HouseholdApllianceEntity(String id) {
         this.id = id;
     }
 
-    public HouseholdApllianceEntity(Integer id, ApplianceType appliance, HouseholdEntity household) {
+    public HouseholdApllianceEntity(String id, ApplianceType appliance, HouseholdEntity household) {
         this.id = id;
         this.appliance = appliance;
         this.household = household;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
