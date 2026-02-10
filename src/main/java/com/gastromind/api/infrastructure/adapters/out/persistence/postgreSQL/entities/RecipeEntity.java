@@ -1,10 +1,10 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
 import jakarta.persistence.*;
 import java.util.List;
 
-import com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.enums.ApplianceType;
-import com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.enums.DifficultyLevel;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ApplianceType;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.DifficultyLevel;
 
 import java.time.LocalDateTime;
 

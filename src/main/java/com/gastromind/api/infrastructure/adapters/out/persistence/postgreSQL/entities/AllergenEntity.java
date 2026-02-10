@@ -1,32 +1,36 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "unit")
-public class UnitEntity {
+@Table(name = "allergen")
+public class AllergenEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
 
-    @OneToMany(mappedBy = "unit")
-    private List<RecipeIngredientEntity> recipeIngredients;
+    @ManyToMany(mappedBy = "allergens")
+    private Set<UserEntity> users;
 
-    public UnitEntity() {
+    @ManyToMany(mappedBy = "allergens")
+    private Set<ProductEntity> products;
+
+    public AllergenEntity() {
     }
 
-    public UnitEntity(Integer id) {
+    public AllergenEntity(Integer id) {
         this.id = id;
     }
 
-    public UnitEntity(Integer id, String name, List<RecipeIngredientEntity> recipeIngredients) {
+    public AllergenEntity(Integer id, String name, Set<UserEntity> users, Set<ProductEntity> products) {
         this.id = id;
         this.name = name;
-        this.recipeIngredients = recipeIngredients;
+        this.users = users;
+        this.products = products;
     }
 
     public Integer getId() {
@@ -45,12 +49,20 @@ public class UnitEntity {
         this.name = name;
     }
 
-    public List<RecipeIngredientEntity> getRecipeIngredients() {
-        return recipeIngredients;
+    public Set<UserEntity> getUsers() {
+        return users;
     }
 
-    public void setRecipeIngredients(List<RecipeIngredientEntity> recipeIngredients) {
-        this.recipeIngredients = recipeIngredients;
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
+    }
+
+    public Set<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<ProductEntity> products) {
+        this.products = products;
     }
 
     @Override
@@ -69,7 +81,7 @@ public class UnitEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UnitEntity other = (UnitEntity) obj;
+        AllergenEntity other = (AllergenEntity) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

@@ -1,36 +1,32 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "allergen")
-public class AllergenEntity {
+@Table(name = "store")
+public class StoreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
 
-    @ManyToMany(mappedBy = "allergens")
-    private Set<UserEntity> users;
+    @OneToMany(mappedBy = "store")
+    private List<TicketEntity> tickets;
 
-    @ManyToMany(mappedBy = "allergens")
-    private Set<ProductEntity> products;
-
-    public AllergenEntity() {
+    public StoreEntity() {
     }
 
-    public AllergenEntity(Integer id) {
+    public StoreEntity(Integer id) {
         this.id = id;
     }
 
-    public AllergenEntity(Integer id, String name, Set<UserEntity> users, Set<ProductEntity> products) {
+    public StoreEntity(Integer id, String name, List<TicketEntity> tickets) {
         this.id = id;
         this.name = name;
-        this.users = users;
-        this.products = products;
+        this.tickets = tickets;
     }
 
     public Integer getId() {
@@ -49,20 +45,12 @@ public class AllergenEntity {
         this.name = name;
     }
 
-    public Set<UserEntity> getUsers() {
-        return users;
+    public List<TicketEntity> getTickets() {
+        return tickets;
     }
 
-    public void setUsers(Set<UserEntity> users) {
-        this.users = users;
-    }
-
-    public Set<ProductEntity> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<ProductEntity> products) {
-        this.products = products;
+    public void setTickets(List<TicketEntity> tickets) {
+        this.tickets = tickets;
     }
 
     @Override
@@ -81,7 +69,7 @@ public class AllergenEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        AllergenEntity other = (AllergenEntity) obj;
+        StoreEntity other = (StoreEntity) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

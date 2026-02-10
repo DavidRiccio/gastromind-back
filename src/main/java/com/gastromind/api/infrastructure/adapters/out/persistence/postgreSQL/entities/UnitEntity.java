@@ -1,32 +1,32 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
 import java.util.List;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "store")
-public class StoreEntity {
+@Table(name = "unit")
+public class UnitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
 
-    @OneToMany(mappedBy = "store")
-    private List<TicketEntity> tickets;
+    @OneToMany(mappedBy = "unit")
+    private List<RecipeIngredientEntity> recipeIngredients;
 
-    public StoreEntity() {
+    public UnitEntity() {
     }
 
-    public StoreEntity(Integer id) {
+    public UnitEntity(Integer id) {
         this.id = id;
     }
 
-    public StoreEntity(Integer id, String name, List<TicketEntity> tickets) {
+    public UnitEntity(Integer id, String name, List<RecipeIngredientEntity> recipeIngredients) {
         this.id = id;
         this.name = name;
-        this.tickets = tickets;
+        this.recipeIngredients = recipeIngredients;
     }
 
     public Integer getId() {
@@ -45,12 +45,12 @@ public class StoreEntity {
         this.name = name;
     }
 
-    public List<TicketEntity> getTickets() {
-        return tickets;
+    public List<RecipeIngredientEntity> getRecipeIngredients() {
+        return recipeIngredients;
     }
 
-    public void setTickets(List<TicketEntity> tickets) {
-        this.tickets = tickets;
+    public void setRecipeIngredients(List<RecipeIngredientEntity> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class StoreEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        StoreEntity other = (StoreEntity) obj;
+        UnitEntity other = (UnitEntity) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

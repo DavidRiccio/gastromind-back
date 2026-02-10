@@ -1,4 +1,4 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
 import java.util.ArrayList;
 import java.util.List;

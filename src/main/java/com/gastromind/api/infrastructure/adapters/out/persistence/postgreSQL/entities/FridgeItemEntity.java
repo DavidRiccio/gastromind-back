@@ -1,6 +1,6 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.enums.ItemStatus;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ItemStatus;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;

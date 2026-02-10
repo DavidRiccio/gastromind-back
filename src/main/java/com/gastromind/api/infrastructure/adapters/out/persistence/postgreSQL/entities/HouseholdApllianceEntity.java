@@ -1,6 +1,6 @@
-package com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.entities;
+package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
-import com.gastromind.infrastructure.adapters.out.persistence.postgreSQL.enums.ApplianceType;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.ApplianceType;
 
 import jakarta.persistence.*;
 
