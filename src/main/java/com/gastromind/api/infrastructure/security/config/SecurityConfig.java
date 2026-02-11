@@ -2,7 +2,7 @@ package com.gastromind.api.infrastructure.security.config;
 
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.User;
-import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.UserAdapter;
+import com.gastromind.api.infrastructure.adapters.out.persistence.jpa.UserAdapter;
 import com.gastromind.api.infrastructure.security.filter.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
