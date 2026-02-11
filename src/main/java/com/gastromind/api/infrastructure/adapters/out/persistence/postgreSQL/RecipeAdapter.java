@@ -4,38 +4,42 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Recipe;
 import com.gastromind.api.domain.repositories.RecipeRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.RecipeEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.RecipeJpaRepository;
-
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.RecipeMapper;
+@Component
 public class RecipeAdapter implements RecipeRepository {
 
     @Autowired
     RecipeJpaRepository recipeJpaRepository;
 
+    @Autowired
+    RecipeMapper recipeMapper;
+
     @Override
     public Recipe save(Recipe recipe) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        RecipeEntity entity = recipeMapper.toEntity(recipe);
+        return recipeMapper.toDomain(recipeJpaRepository.save(entity));
     }
 
     @Override
     public Optional<Recipe> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return recipeJpaRepository.findById(id).map(recipeMapper::toDomain);
     }
 
     @Override
     public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        recipeJpaRepository.deleteById(id);
     }
 
     @Override
     public List<Recipe> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        List<RecipeEntity> recipeEntities = recipeJpaRepository.findAll();
+        return recipeMapper.toDomainList(recipeEntities);
     }
 
 }

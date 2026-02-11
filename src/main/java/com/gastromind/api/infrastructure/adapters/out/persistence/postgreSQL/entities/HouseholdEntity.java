@@ -28,7 +28,7 @@ public class HouseholdEntity {
     private List<FridgeEntity> fridges = new ArrayList<>();
 
     @OneToMany(mappedBy = "household", cascade = CascadeType.ALL)
-    private List<HouseholdApllianceEntity> aplliances = new ArrayList<>();
+    private List<HouseholdApplianceEntity> aplliances = new ArrayList<>();
 
     public HouseholdEntity() {
     }
@@ -39,7 +39,7 @@ public class HouseholdEntity {
 
     public HouseholdEntity(String id, String name, int members_count, List<UserEntity> users,
             List<FridgeEntity> fridges,
-            List<HouseholdApllianceEntity> aplliances) {
+            List<HouseholdApplianceEntity> aplliances) {
         this.id = id;
         this.name = name;
         this.members_count = members_count;
@@ -88,11 +88,11 @@ public class HouseholdEntity {
         this.fridges = fridges;
     }
 
-    public List<HouseholdApllianceEntity> getAplliances() {
+    public List<HouseholdApplianceEntity> getAplliances() {
         return aplliances;
     }
 
-    public void setAplliances(List<HouseholdApllianceEntity> aplliances) {
+    public void setAplliances(List<HouseholdApplianceEntity> aplliances) {
         this.aplliances = aplliances;
     }
 

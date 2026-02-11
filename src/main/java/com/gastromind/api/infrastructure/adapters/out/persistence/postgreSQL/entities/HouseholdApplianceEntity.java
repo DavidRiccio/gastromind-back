@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "household_appliances")
-public class HouseholdApllianceEntity {
+public class HouseholdApplianceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
@@ -26,14 +26,14 @@ public class HouseholdApllianceEntity {
     @JoinColumn(name = "household_id")
     private HouseholdEntity household;
 
-    public HouseholdApllianceEntity() {
+    public HouseholdApplianceEntity() {
     }
 
-    public HouseholdApllianceEntity(String id) {
+    public HouseholdApplianceEntity(String id) {
         this.id = id;
     }
 
-    public HouseholdApllianceEntity(String id, ApplianceType appliance, HouseholdEntity household) {
+    public HouseholdApplianceEntity(String id, ApplianceType appliance, HouseholdEntity household) {
         this.id = id;
         this.appliance = appliance;
         this.household = household;
@@ -79,7 +79,7 @@ public class HouseholdApllianceEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        HouseholdApllianceEntity other = (HouseholdApllianceEntity) obj;
+        HouseholdApplianceEntity other = (HouseholdApplianceEntity) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

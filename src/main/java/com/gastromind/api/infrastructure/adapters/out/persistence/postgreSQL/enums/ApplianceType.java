@@ -1,5 +1,5 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums;
 
 public enum ApplianceType {
-    OVEN, MICROWAVE, AIR_FRYER, STOVE
+    HORNO, MICROONDAS, AIR_FRYER, VITROCERAMICA, ROBOT_COCINA, BATIDORA
 }

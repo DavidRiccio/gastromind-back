@@ -4,38 +4,44 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Allergen;
 import com.gastromind.api.domain.repositories.AllergenRepository;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.AllergenEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.AllergenJpaRepository;
-
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.AllergenMapper;
+@Component
 public class AllergenAdapter implements AllergenRepository {
 
     @Autowired
     AllergenJpaRepository allergenJpaRepository;
 
+    @Autowired
+    AllergenMapper allergenMapper;
+
     @Override
     public Allergen save(Allergen allergen) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        AllergenEntity entity = allergenMapper.toEntity(allergen);
+        return allergenMapper.toDomain(allergenJpaRepository.save(entity));
+
     }
 
     @Override
     public Optional<Allergen> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return allergenJpaRepository.findById(id).map(allergenMapper::toDomain);
+
     }
 
     @Override
     public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        allergenJpaRepository.deleteById(id);
     }
 
     @Override
     public List<Allergen> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        List<AllergenEntity> allergenEntities = allergenJpaRepository.findAll();
+        return allergenMapper.toDomainList(allergenEntities);
     }
 
 }

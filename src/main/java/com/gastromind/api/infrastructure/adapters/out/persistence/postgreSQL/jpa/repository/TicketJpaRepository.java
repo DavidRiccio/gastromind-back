@@ -2,8 +2,11 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jp
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gastromind.api.domain.models.Ticket;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.TicketEntity;
 
-public interface TicketJpaRepository extends JpaRepository<Ticket, String> {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TicketJpaRepository extends JpaRepository<TicketEntity, String> {
     
 }
