@@ -39,7 +39,7 @@ public class UserFavoritesController {
     @GetMapping("/{id}")
     public ResponseEntity<UserFavorites> getById(
             @Parameter(description = "ID de la receta favorita a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class UserFavoritesController {
 
     @Operation(summary = "Actualizar receta favorita", description = "Modifica los datos de una receta favorita existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<UserFavorites> update(@PathVariable Integer id, @RequestBody UserFavorites userFavorites) {
+    public ResponseEntity<UserFavorites> update(@PathVariable String id, @RequestBody UserFavorites userFavorites) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar receta favorita", description = "Borra físicamente una receta favorita de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

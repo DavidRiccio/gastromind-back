@@ -39,7 +39,7 @@ public class UsualPurchaseController {
     @GetMapping("/{id}")
     public ResponseEntity<UsualPurchase> getById(   
             @Parameter(description = "ID del producto más comprado a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class UsualPurchaseController {
 
     @Operation(summary = "Actualizar producto más comprado", description = "Modifica los datos de un producto más comprado existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<UsualPurchase> update(@PathVariable Integer id, @RequestBody UsualPurchase usualPurchase) {
+    public ResponseEntity<UsualPurchase> update(@PathVariable String id, @RequestBody UsualPurchase usualPurchase) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar producto más comprado", description = "Borra físicamente un producto más comprado de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }
