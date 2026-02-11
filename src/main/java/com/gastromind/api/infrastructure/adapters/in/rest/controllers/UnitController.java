@@ -39,7 +39,7 @@ public class UnitController {
     @GetMapping("/{id}")
     public ResponseEntity<Unit> getById(
             @Parameter(description = "ID de la unidad a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class UnitController {
 
     @Operation(summary = "Actualizar unidad", description = "Modifica los datos de una unidad de medida existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Unit> update(@PathVariable Integer id, @RequestBody Unit unit) {
+    public ResponseEntity<Unit> update(@PathVariable String id, @RequestBody Unit unit) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar unidad", description = "Borra físicamente una unidad de medida de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

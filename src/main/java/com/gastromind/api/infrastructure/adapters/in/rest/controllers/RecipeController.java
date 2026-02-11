@@ -39,7 +39,7 @@ public class RecipeController {
     @GetMapping("/{id}")
     public ResponseEntity<Recipe> getById(
             @Parameter(description = "ID de la receta a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class RecipeController {
 
     @Operation(summary = "Actualizar receta", description = "Modifica los datos de una receta existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Recipe> update(@PathVariable Integer id, @RequestBody Recipe recipe) {
+    public ResponseEntity<Recipe> update(@PathVariable String id, @RequestBody Recipe recipe) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar receta", description = "Borra físicamente una receta de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

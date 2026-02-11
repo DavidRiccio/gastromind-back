@@ -39,7 +39,7 @@ public class HouseHoldController {
     @GetMapping("/{id}")
     public ResponseEntity<HouseHold> getById(
             @Parameter(description = "ID de la unidad familiar a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class HouseHoldController {
 
     @Operation(summary = "Actualizar unidad familiar", description = "Modifica los datos de una unidad familiar existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<HouseHold> update(@PathVariable Integer id, @RequestBody HouseHold houseHold) {
+    public ResponseEntity<HouseHold> update(@PathVariable String id, @RequestBody HouseHold houseHold) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar unidad familiar", description = "Borra físicamente una unidad familiar de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

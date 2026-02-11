@@ -39,7 +39,7 @@ public class TicketController {
     @GetMapping("/{id}")
     public ResponseEntity<Ticket> getById(
             @Parameter(description = "ID del ticket a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class TicketController {
 
     @Operation(summary = "Actualizar ticket", description = "Modifica los datos de un ticket existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Ticket> update(@PathVariable Integer id, @RequestBody Ticket ticket) {
+    public ResponseEntity<Ticket> update(@PathVariable String id, @RequestBody Ticket ticket) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar ticket", description = "Borra físicamente un ticket de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

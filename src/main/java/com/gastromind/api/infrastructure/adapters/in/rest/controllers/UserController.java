@@ -39,7 +39,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(
             @Parameter(description = "ID del usuario a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class UserController {
 
     @Operation(summary = "Actualizar usuario", description = "Modifica los datos de un usuario existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable Integer id, @RequestBody User user) {
+    public ResponseEntity<User> update(@PathVariable String id, @RequestBody User user) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar usuario", description = "Borra físicamente un usuario de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }
