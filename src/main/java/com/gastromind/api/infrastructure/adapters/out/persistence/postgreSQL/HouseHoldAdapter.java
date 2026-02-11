@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.HouseHold;
-import com.gastromind.api.domain.repositories.HouseHoldRepository;
+import com.gastromind.api.domain.ports.out.HouseHoldRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.HouseholdEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.HouseHoldJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.HouseholdMapper;

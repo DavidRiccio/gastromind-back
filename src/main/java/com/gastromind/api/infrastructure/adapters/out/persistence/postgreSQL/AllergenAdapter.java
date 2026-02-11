@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Allergen;
-import com.gastromind.api.domain.repositories.AllergenRepository;
+import com.gastromind.api.domain.ports.out.AllergenRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.AllergenEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.AllergenJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.AllergenMapper;

@@ -1,11 +1,11 @@
-package com.gastromind.api.domain.repositories;
+package com.gastromind.api.domain.ports.out;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.gastromind.api.domain.models.Fridge;
 
-public interface Fridgerepository {
+public interface FridgeRepository {
     Fridge save(Fridge fridge);
 
     Optional<Fridge> findById(String id);

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gastromind.api.domain.models.Product;
-import com.gastromind.api.domain.repositories.ProductRepository;
+import com.gastromind.api.domain.ports.out.ProductRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.ProductEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.ProductJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.ProductMapper;

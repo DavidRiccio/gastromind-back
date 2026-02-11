@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.User;
-import com.gastromind.api.domain.repositories.UserRepository;
+import com.gastromind.api.domain.ports.out.UserRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UserEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UserJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.UserMapper;
 
 @Component
-public class UserPersistenceAdapter implements UserRepository {
+public class UserAdapter implements UserRepository {
 
     @Autowired
     UserJpaRepository userJpaRepository;

@@ -1,4 +1,4 @@
-package com.gastromind.api.domain.repositories;
+package com.gastromind.api.domain.ports.out;
 
 import java.util.List;
 import java.util.Optional;

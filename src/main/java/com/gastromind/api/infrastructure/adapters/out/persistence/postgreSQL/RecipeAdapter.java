@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Recipe;
-import com.gastromind.api.domain.repositories.RecipeRepository;
+import com.gastromind.api.domain.ports.out.RecipeRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.RecipeEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.RecipeJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.RecipeMapper;

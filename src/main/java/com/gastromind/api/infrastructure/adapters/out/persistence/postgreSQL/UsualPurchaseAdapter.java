@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.UsualPurchase;
-import com.gastromind.api.domain.repositories.UsualPurchaseRepository;
+import com.gastromind.api.domain.ports.out.UsualPurchaseRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UsualPurchaseEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UsualPurchaseJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.UsualPurchaseMapper;

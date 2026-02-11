@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.UserFavorites;
-import com.gastromind.api.domain.repositories.UserFavoritesRepository;
+import com.gastromind.api.domain.ports.out.UserFavoritesRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UserFavoritesEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UserFavoritesJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.UserFavoritesMapper;

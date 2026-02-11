@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Ticket;
-import com.gastromind.api.domain.repositories.Ticketrepository;
+import com.gastromind.api.domain.ports.out.TicketRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.TicketEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.TicketJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.TicketMapper;
 @Component
-public class TicketRepository implements Ticketrepository {
+public class TicketAdapter implements TicketRepository {
 
     @Autowired
     TicketJpaRepository ticketJpaRepository;

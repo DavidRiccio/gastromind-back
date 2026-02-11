@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Category;
-import com.gastromind.api.domain.repositories.CategoryRepository;
+import com.gastromind.api.domain.ports.out.CategoryRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.CategoryEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.CategoryJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.CategoryMapper;

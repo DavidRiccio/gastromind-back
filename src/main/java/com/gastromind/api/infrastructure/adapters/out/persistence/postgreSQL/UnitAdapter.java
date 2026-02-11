@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gastromind.api.domain.models.Unit;
-import com.gastromind.api.domain.repositories.UnitRepository;
+import com.gastromind.api.domain.ports.out.UnitRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UnitEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UnitJpaRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.mappers.UnitMapper;
