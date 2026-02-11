@@ -1,0 +1,13 @@
+package com.gastromind.api.domain.ports.in;
+
+import java.util.List;
+
+import com.gastromind.api.domain.models.User;
+
+public interface IUserService {
+    List<User> findAll();
+    User findById(String id);
+    User create(User user);
+    User update(String id, User user);
+    void delete(String id);
+}
