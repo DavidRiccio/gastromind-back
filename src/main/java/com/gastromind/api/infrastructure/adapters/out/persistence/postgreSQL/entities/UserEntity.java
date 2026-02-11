@@ -1,8 +1,10 @@
 package com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.enums.RoleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ import jakarta.persistence.Table;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(nullable = false)
@@ -31,6 +33,9 @@ public class UserEntity {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private RoleType role;
 
     @ManyToOne
     @JoinColumn(name = "household_id")
@@ -57,13 +62,12 @@ public class UserEntity {
         this.id = id;
     }
 
-    public UserEntity(String id, String name, String email, String password, HouseholdEntity household,
-            List<TicketEntity> tickets, List<UsualPurchaseEntity> usualPurchases, Set<AllergenEntity> allergens,
-            Set<RecipeEntity> favoriteRecipes) {
+    public UserEntity(String id, String name, String email, String password, RoleType role, HouseholdEntity household, List<TicketEntity> tickets, List<UsualPurchaseEntity> usualPurchases, Set<AllergenEntity> allergens, Set<RecipeEntity> favoriteRecipes) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
         this.household = household;
         this.tickets = tickets;
         this.usualPurchases = usualPurchases;
@@ -143,29 +147,23 @@ public class UserEntity {
         this.favoriteRecipes = favoriteRecipes;
     }
 
+    public RoleType getRole() {
+        return role;
+    }
+
+    public void setRole(RoleType role) {
+        this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+        return Objects.hashCode(getId());
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UserEntity other = (UserEntity) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
-
 }

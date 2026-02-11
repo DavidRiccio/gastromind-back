@@ -33,6 +33,11 @@ public class UserPersistenceAdapter implements UserRepository {
     }
 
     @Override
+    public Optional<User> findByName(String name) {
+        return userJpaRepository.findByName(name).map(userMapper::toDomain);
+    }
+
+    @Override
     public void deleteById(String id) {
         userJpaRepository.deleteById(id);
     }
