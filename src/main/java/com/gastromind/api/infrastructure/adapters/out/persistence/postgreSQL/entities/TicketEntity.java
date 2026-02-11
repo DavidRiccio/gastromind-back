@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @Table(name = "ticket")
 public class TicketEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "total_amount", precision = 10, scale = 2)
@@ -29,7 +29,7 @@ public class TicketEntity {
     private LocalDateTime purchaseDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "users_id")
     private UserEntity user;
 
     @ManyToOne

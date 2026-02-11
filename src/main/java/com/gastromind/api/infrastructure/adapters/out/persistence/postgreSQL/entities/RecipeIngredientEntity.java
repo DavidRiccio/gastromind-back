@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "recipe_ingredients")
 public class RecipeIngredientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private BigDecimal quantityRequired;

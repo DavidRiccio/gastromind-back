@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "household_appliances")
 public class HouseholdApplianceEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Enumerated(EnumType.STRING)

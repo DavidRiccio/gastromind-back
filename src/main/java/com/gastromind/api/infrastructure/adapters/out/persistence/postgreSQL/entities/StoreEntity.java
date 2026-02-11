@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 @Table(name = "store")
 public class StoreEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String name;

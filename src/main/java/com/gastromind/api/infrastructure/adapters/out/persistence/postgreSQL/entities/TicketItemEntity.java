@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 public class TicketItemEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(precision = 10, scale = 2, nullable = false)

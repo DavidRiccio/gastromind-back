@@ -24,6 +24,14 @@ public interface UserRepository {
     Optional<User> findById(String id);
 
     /**
+     * Busca un User por name
+     *
+     * @param name nombre del usuairo
+     * @return El usuario o null
+     */
+    Optional<User> findByName(String name);
+
+    /**
      * Borra el usuario
      * 
      * @param id Id del usuario

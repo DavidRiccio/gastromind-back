@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 @Table(name = "usual_purchase")
 public class UsualPurchaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "target_quantity")
