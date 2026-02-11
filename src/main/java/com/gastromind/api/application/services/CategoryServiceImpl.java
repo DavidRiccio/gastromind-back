@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.Category;
 import com.gastromind.api.domain.ports.in.ICategoryService;
 import com.gastromind.api.domain.ports.out.CategoryRepository;
 
-
+@Service
 public class CategoryServiceImpl implements ICategoryService {
 
     private final CategoryRepository repository;

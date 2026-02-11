@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.Allergen;
 import com.gastromind.api.domain.ports.in.IAllergenService;
 import com.gastromind.api.domain.ports.out.AllergenRepository;
 
-
+@Service
 public class AllergenServiceImpl implements IAllergenService {
 
     private final AllergenRepository repository;

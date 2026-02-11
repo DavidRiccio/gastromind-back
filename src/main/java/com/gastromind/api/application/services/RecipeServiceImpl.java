@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.Recipe;
 import com.gastromind.api.domain.ports.in.IRecipeService;
 import com.gastromind.api.domain.ports.out.RecipeRepository;
 
-
+@Service
 public class RecipeServiceImpl implements IRecipeService {
 
     private final RecipeRepository repository;

@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.HouseHold;
 import com.gastromind.api.domain.ports.in.IHouseHoldService;
 import com.gastromind.api.domain.ports.out.HouseHoldRepository;
 
-
+@Service
 public class HouseHoldServiceImpl implements IHouseHoldService {
 
     private final HouseHoldRepository repository;

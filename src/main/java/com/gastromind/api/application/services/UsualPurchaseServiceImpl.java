@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.UsualPurchase;
 import com.gastromind.api.domain.ports.in.IUsualPurchaseService;
 import com.gastromind.api.domain.ports.out.UsualPurchaseRepository;
 
-
+@Service
 public class UsualPurchaseServiceImpl implements IUsualPurchaseService {
 
     private final UsualPurchaseRepository repository;

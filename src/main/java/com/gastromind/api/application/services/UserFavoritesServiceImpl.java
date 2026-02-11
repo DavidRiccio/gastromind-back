@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.UserFavorites;
 import com.gastromind.api.domain.ports.in.IUserFavoritesService;
 import com.gastromind.api.domain.ports.out.UserFavoritesRepository;
 
-
+@Service
 public class UserFavoritesServiceImpl implements IUserFavoritesService {
 
     private final UserFavoritesRepository repository;

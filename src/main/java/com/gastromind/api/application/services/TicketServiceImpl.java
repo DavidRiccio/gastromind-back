@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.Ticket;
 import com.gastromind.api.domain.ports.in.ITicketService;
 import com.gastromind.api.domain.ports.out.TicketRepository;
 
-
+@Service
 public class TicketServiceImpl implements ITicketService {
 
     private final TicketRepository repository;

@@ -2,12 +2,14 @@ package com.gastromind.api.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gastromind.api.domain.exceptions.NotFoundException;
 import com.gastromind.api.domain.models.User;
 import com.gastromind.api.domain.ports.in.IUserService;
 import com.gastromind.api.domain.ports.out.UserRepository;
 
-
+@Service
 public class UserServiceImpl implements IUserService {
 
     private final UserRepository repository;
