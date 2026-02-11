@@ -39,7 +39,7 @@ public class StoreController {
     @GetMapping("/{id}")
     public ResponseEntity<Store> getById(
             @Parameter(description = "ID de la tienda a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class StoreController {
 
     @Operation(summary = "Actualizar tienda", description = "Modifica los datos de una tienda existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Store> update(@PathVariable Integer id, @RequestBody Store store) {
+    public ResponseEntity<Store> update(@PathVariable String id, @RequestBody Store store) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar tienda", description = "Borra físicamente una tienda de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

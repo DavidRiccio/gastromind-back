@@ -39,7 +39,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<Product> getById(
             @Parameter(description = "ID del producto a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class ProductController {
 
     @Operation(summary = "Actualizar producto", description = "Modifica los datos de un producto existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable Integer id, @RequestBody Product product) {
+    public ResponseEntity<Product> update(@PathVariable String id, @RequestBody Product product) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar producto", description = "Borra físicamente un producto de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

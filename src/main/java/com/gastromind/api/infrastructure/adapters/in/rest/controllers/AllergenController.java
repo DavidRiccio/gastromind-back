@@ -39,7 +39,7 @@ public class AllergenController {
     @GetMapping("/{id}")
     public ResponseEntity<Allergen> getById(
             @Parameter(description = "ID del alérgeno a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class AllergenController {
 
     @Operation(summary = "Actualizar alérgeno", description = "Modifica los datos de un alérgeno existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Allergen> update(@PathVariable Integer id, @RequestBody Allergen allergen) {
+    public ResponseEntity<Allergen> update(@PathVariable String id, @RequestBody Allergen allergen) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar alérgeno", description = "Borra físicamente un alérgeno de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }

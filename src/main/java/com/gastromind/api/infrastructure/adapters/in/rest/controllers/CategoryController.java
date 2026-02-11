@@ -39,7 +39,7 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<Category> getById(
             @Parameter(description = "ID de la categoría a buscar", example = "1") 
-            @PathVariable Integer id) {
+            @PathVariable String id) {
         return ResponseEntity.ok().build();
     }
 
@@ -51,13 +51,13 @@ public class CategoryController {
 
     @Operation(summary = "Actualizar categoría", description = "Modifica los datos de una categoría existente.")
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@PathVariable Integer id, @RequestBody Category category) {
+    public ResponseEntity<Category> update(@PathVariable String id, @RequestBody Category category) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Eliminar categoría", description = "Borra físicamente una categoría de la base de datos.")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }
 }
