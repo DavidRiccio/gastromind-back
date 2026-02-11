@@ -11,6 +11,7 @@ import com.gastromind.api.domain.ports.out.CategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements ICategoryService {
+    
 
     private final CategoryRepository repository;
 

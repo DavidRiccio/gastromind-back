@@ -9,6 +9,8 @@ import com.gastromind.api.domain.models.Allergen;
 import com.gastromind.api.domain.ports.in.IAllergenService;
 import com.gastromind.api.domain.ports.out.AllergenRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class AllergenServiceImpl implements IAllergenService {
 
@@ -30,11 +32,13 @@ public class AllergenServiceImpl implements IAllergenService {
     }
 
     @Override
+    @Transactional
     public Allergen create(Allergen allergen) {
         return repository.save(allergen);
     }
 
     @Override
+    @Transactional
     public Allergen update(String id, Allergen allergen) {
         findById(id);
         allergen.setId(id);
@@ -42,6 +46,7 @@ public class AllergenServiceImpl implements IAllergenService {
     }
 
     @Override
+    @Transactional
     public void delete(String id) {
         findById(id);
         repository.deleteById(id);
