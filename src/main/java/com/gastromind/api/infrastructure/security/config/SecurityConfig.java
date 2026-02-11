@@ -1,5 +1,7 @@
 package com.gastromind.api.infrastructure.security.config;
 
+import com.gastromind.api.domain.exceptions.NotFoundException;
+import com.gastromind.api.domain.models.User;
 import com.gastromind.api.domain.repositories.UserRepository;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.UserPersistenceAdapter;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UserEntity;
@@ -44,12 +46,12 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(UserPersistenceAdapter userRepository) {
         return username -> {
-            UserEntity user = new UserEntity(); // TODO: pedir user por name
+            User user = userRepository.findByName(username).orElseThrow(()-> new NotFoundException("Usuario no encontrado")); // TODO: pedir user por name
 
             return org.springframework.security.core.userdetails.User
-                    .withUsername(null) // TODO: pasar user.getUsername()
+                    .withUsername(user.getName())
                     .password(user.getPassword())
-                    .authorities("") // TODO: usar user.getRoles()
+                    .authorities(user.getRole().toString())
                     .build();
         };
     }

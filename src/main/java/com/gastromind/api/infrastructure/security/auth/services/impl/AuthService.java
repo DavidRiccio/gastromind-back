@@ -1,5 +1,7 @@
 package com.gastromind.api.infrastructure.security.auth.services.impl;
 
+import com.gastromind.api.domain.models.enums.Role;
+import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.entities.UserEntity;
 import com.gastromind.api.infrastructure.adapters.out.persistence.postgreSQL.jpa.repository.UserJpaRepository;
 import com.gastromind.api.infrastructure.security.auth.dtos.RegisterRequest;
 import com.gastromind.api.infrastructure.security.auth.services.IAuthService;
@@ -19,34 +21,24 @@ public class AuthService implements IAuthService {
 
     @Override
     public boolean validateCredentials(String username, String password) {
-        /**
-        return userRepository.findByUsername(username)
-                .map(user -> {
-                    boolean matches = passwordEncoder.matches(password, user.getPassword());
-                    return matches;
-                })
-                .orElseGet(false);
-         */
-        return true; // TODO: reemplazar por la parte comentada
+        return userRepository.findByName(username)
+                .map(user -> passwordEncoder.matches(password, user.getPassword()))
+                .orElse(false);
     }
 
     @Override
     public void register(RegisterRequest request) {
-        /** TODO: implementar la parte comentada
-        if (userRepository.findByUsername(request.username()).isPresent()) {
-            throw new RuntimeException("User already exists");
+        if (userRepository.findByName(request.username()).isPresent()) {
+            throw new RuntimeException("Ya existe un usuario con esas credenciales");
         }
 
         UserEntity user = new UserEntity();
-        user.setUsername(request.username());
+        user.setName(request.username());
         user.setPassword(passwordEncoder.encode(request.password()));
-
-        String formattedRole = request.role().startsWith("ROLE_") ?
-                request.role() : "ROLE_" + request.role().toUpperCase();
-        user.setRole(formattedRole);
+        user.setEmail(request.email());
+        user.setRole(request.role());
 
         userRepository.save(user);
-         */
     }
 }
 
