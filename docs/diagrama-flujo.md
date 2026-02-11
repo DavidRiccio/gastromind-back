@@ -17,7 +17,7 @@
 
 ---
 
-### CU-02: Sugerencia de Receta Inteligente (IA)
+### CU-02: Sugerencia de Receta Inteligente (IA) 
 
 | Campo | Detalle |
 | --- | --- |
