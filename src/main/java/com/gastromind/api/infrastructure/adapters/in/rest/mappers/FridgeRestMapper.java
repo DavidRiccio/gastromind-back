@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.fridge.FridgeResp
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface FridgeRestMapper {
     @Mapping(target = "houseHold_id.id", source = "household_id")
@@ -14,6 +16,8 @@ public interface FridgeRestMapper {
 
     @Mapping(target = "household_id", source = "houseHold_id.id")
     FridgeResponse toResponse(Fridge domain);
+
+    List<FridgeResponse> toResponseList(List<Fridge> fridges);
 }
 
 

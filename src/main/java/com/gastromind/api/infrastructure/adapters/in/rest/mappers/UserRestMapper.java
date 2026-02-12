@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.user.UserResponse
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface UserRestMapper {
 
@@ -15,4 +17,6 @@ public interface UserRestMapper {
 
     @Mapping(target = "houseHold_id", source = "houseHold_id.id")
     UserResponse toResponse(User domain);
+
+    List<UserResponse> toResponseList(List<User> users);
 }

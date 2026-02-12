@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.allergen.Allergen
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface AllergenRestMapper {
 
@@ -13,4 +15,6 @@ public interface AllergenRestMapper {
     Allergen toDomain(AllergenRequest request);
 
     AllergenResponse toResponse(Allergen domain);
+
+    List<AllergenResponse> toResponseList(List<Allergen> allergens);
 }

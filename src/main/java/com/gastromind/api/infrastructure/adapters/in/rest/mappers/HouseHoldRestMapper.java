@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.household.HouseHo
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface HouseHoldRestMapper {
 
@@ -14,4 +16,6 @@ public interface HouseHoldRestMapper {
     HouseHold toDomain(HouseHoldRequest request);
 
     HouseHoldResponse toResponse(HouseHold domain);
+
+    List<HouseHoldResponse> toResponseList(List<HouseHold> houseHolds);
 }

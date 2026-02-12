@@ -1,9 +1,9 @@
-package com.gastromind.api.infrastructure.adapters.in.rest.dtos.usualfavorites;
+package com.gastromind.api.infrastructure.adapters.in.rest.dtos.userfavorites;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Respuesta de la relación de favorito")
-public record UsualFavoritesResponse(
+public record UserFavoritesResponse(
 
         @Schema(example = "fav-00123", description = "ID único de la entrada en favoritos")
         String id,

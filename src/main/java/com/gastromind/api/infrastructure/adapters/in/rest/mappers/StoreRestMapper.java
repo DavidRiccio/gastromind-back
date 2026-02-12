@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.store.StoreRespon
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface StoreRestMapper {
 
@@ -13,4 +15,6 @@ public interface StoreRestMapper {
     Store toDomain(StoreRequest request);
 
     StoreResponse toResponse(Store domain);
+
+    List<StoreResponse> toResponseList(List<Store> stores);
 }

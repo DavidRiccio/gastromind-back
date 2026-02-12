@@ -1,10 +1,10 @@
-package com.gastromind.api.infrastructure.adapters.in.rest.dtos.usualfavorites;
+package com.gastromind.api.infrastructure.adapters.in.rest.dtos.userfavorites;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
 @Schema(description = "Datos para marcar una receta como favorita")
-public record UsualFavoritesRequest(
+public record UserFavoritesRequest(
 
         @Schema(example = "usr-456-abc", description = "ID del usuario que marca el favorito")
         @NotBlank(message = "El user_id es obligatorio")

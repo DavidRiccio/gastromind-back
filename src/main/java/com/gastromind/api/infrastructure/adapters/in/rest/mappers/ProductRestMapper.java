@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.product.ProductRe
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ProductRestMapper {
 
@@ -15,4 +17,6 @@ public interface ProductRestMapper {
 
     @Mapping(target = "allergen_id", source = "allergen.id")
     ProductResponse toResponse(Product domain);
+
+    List<ProductResponse> toResponseList(List<Product> products);
 }

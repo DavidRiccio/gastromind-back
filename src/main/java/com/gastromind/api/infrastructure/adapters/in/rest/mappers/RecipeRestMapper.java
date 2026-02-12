@@ -6,10 +6,14 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.recipe.RecipeResp
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface RecipeRestMapper {
     @Mapping(target = "id", ignore = true)
     Recipe toDomain(RecipeRequest request);
 
     RecipeResponse toResponse(Recipe domain);
+
+    List<RecipeResponse> toResponseList(List<Recipe> recipes);
 }

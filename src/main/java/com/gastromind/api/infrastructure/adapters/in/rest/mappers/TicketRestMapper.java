@@ -6,6 +6,8 @@ import com.gastromind.api.infrastructure.adapters.in.rest.dtos.ticket.TicketResp
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface TicketRestMapper {
     @Mapping(target = "id", ignore = true)
@@ -17,4 +19,6 @@ public interface TicketRestMapper {
     @Mapping(target = "user_id", source = "user_id.id")
     @Mapping(target = "store_id", source = "store_id.id")
     TicketResponse toResponse(Ticket domain);
+
+    List<TicketResponse> toResponseList(List<Ticket> tickets);
 }
