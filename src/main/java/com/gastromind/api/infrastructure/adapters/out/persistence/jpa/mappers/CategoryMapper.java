@@ -3,6 +3,7 @@ package com.gastromind.api.infrastructure.adapters.out.persistence.jpa.mappers;
 import java.util.List;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.gastromind.api.domain.models.Category;
 import com.gastromind.api.infrastructure.adapters.out.persistence.jpa.entities.CategoryEntity;
