@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler(ForbiddenException.class)
     public ResponseEntity<ErrorResponse> handleForbbidenException(ForbiddenException ex) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.FORBIDDEN.value(),
                 ex.getMessage(),
                 LocalDateTime.now()
         );
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(NotFoundException.class)
