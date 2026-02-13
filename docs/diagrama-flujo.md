@@ -95,10 +95,6 @@ Este es el punto de salida principal donde se genera valor directo:
 
 ## Explicacion de la estructura del proyecto (Diagrama de Paquetes)
 
-Aquí tienes el diagrama de paquetes de tu proyecto **GastroMind** en formato PlantUML, reflejando la **Arquitectura Hexagonal** que has implementado.
-
-### Diagrama de Paquetes (PlantUML)
-
 
 El proyecto está organizado siguiendo el principio de **separación de intereses** para asegurar que la lógica de negocio sea independiente de la tecnología:
 
