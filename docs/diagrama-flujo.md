@@ -60,7 +60,7 @@
 
 <img src="images/diagrama_casos_de_uso.png" alt="Diagrama de Casos de Uso" align="center" height="400" width="2000" />
 
-### Explicación Detallada del Flujo de Trabajo
+## Explicación Detallada del Flujo de Trabajo (Diagrama de flujo)
 
 El ecosistema de **Gastromind** conecta al usuario con la inteligencia artificial de Gemini a través de cuatro procesos principales:
 
@@ -92,3 +92,23 @@ Este es el punto de salida principal donde se genera valor directo:
 *   **Resultado:** El usuario recibe una receta personalizada, segura y optimizada para consumir lo que ya tiene en casa.
 
 <img src="images/flow-diagram.png" alt="Diagrama de Flujo" align="center" height="1200" width="500" />
+
+## Explicacion de la estructura del proyecto (Diagrama de Paquetes)
+
+Aquí tienes el diagrama de paquetes de tu proyecto **GastroMind** en formato PlantUML, reflejando la **Arquitectura Hexagonal** que has implementado.
+
+### Diagrama de Paquetes (PlantUML)
+
+
+El proyecto está organizado siguiendo el principio de **separación de intereses** para asegurar que la lógica de negocio sea independiente de la tecnología:
+
+1. **Dominio (`domain`)**: Es el corazón del sistema. Contiene los modelos de negocio (como `Product`, `FridgeItem`), las excepciones personalizadas (`NotFoundException`, `AllergenRiskException`) y los **Puertos** (interfaces). Los puertos definen *qué* puede hacer el sistema sin decir *cómo* se hace.
+2. **Aplicación (`application`)**: Aquí residen los servicios (`ServiceImpl`). Estos orquestan la lógica de negocio implementando las interfaces de entrada y comunicándose con los puertos de salida (repositorios).
+3. **Infraestructura (`infrastructure`)**: Contiene los detalles técnicos y adaptadores:
+* **Adaptadores de Entrada (`in.rest`)**: Controladores que exponen la API y DTOs para el intercambio de datos con el cliente.
+* **Adaptadores de Salida (`out.persistence`)**: Implementaciones de base de datos usando JPA, Entidades y Mappers para transformar datos entre la DB y el Dominio.
+* **Seguridad**: Toda la configuración de autenticación JWT y protección de rutas.
+
+4. **Mappers**: Utilizamos MapStruct de forma extensiva en dos niveles para mantener el desacoplamiento: uno para la persistencia (Entidad ↔ Dominio) y otro para la API (Dominio ↔ DTO).
+
+<img src="images/package-diagram.png" alt="Diagrama de Paquetes" align="center" width="800" />
